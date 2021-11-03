@@ -8,7 +8,7 @@ import asyncio
 from discord.ext import commands
 
 # Put your bot token in here.
-TOKEN = 'OTA0NjY1NDI2Mzg5MjU0MTU0.YX-1VQ.Tk-mutatB_VRoofJdsDL8TMBg9U'
+TOKEN = 'REPLACE WITH YOUR TOKEN'
 client = commands.Bot(command_prefix = '.')
 
 @client.event
