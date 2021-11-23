@@ -9,7 +9,8 @@ from discord.ext import commands
 class Watch(commands.Cog):
     def __init__(self, client):
         self.client = client
-    description = "Gets the watch page from MyAnimeList"
+    description = "Gets the recently and popular released anime episodes from the MAL watch page"
+
 
     @commands.command(name='watch')
     async def watch(self, ctx, arg=None):
@@ -32,11 +33,13 @@ class Watch(commands.Cog):
             await ctx.send("I can only retrieve .watch <recent or popular>")
             return None
 
+
         # Sents get request pulling the data
         async with request("GET", URL, headers={}) as response:
             if response.status == 200:
                 databox = await response.json()
                 data = databox["data"]
+
 
             # creates a list, loops through the data, adds it to the list
             # then splits it correctly, the "*" is used because there are anime
@@ -50,12 +53,14 @@ class Watch(commands.Cog):
             string = '*'.join([str(item) for item in listdata])
             x = string.split("*")
 
+
             # loops through the list while replacing True and False to Paid & Free
             for i, word in enumerate(x):
                 if word == 'True':
                     x[i] = 'Paid'
                 elif word == 'False':
                     x[i] = 'Free'
+
 
             # sents the full embed
             embed=discord.Embed(title=setTitle, url=URL2, description="\n" + "1. " + x[0] + " released " + x[2] + " and is " + x[3] + " to watch." + "\n" +
@@ -75,6 +80,7 @@ class Watch(commands.Cog):
             embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
             embed.timestamp = datetime.datetime.utcnow()
             await ctx.send(embed=embed)
+
 
 # adding cog to bot setup
 def setup(bot):
