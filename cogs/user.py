@@ -31,7 +31,7 @@ class User(commands.Cog):
                         return None
 
 
-            # Sents get request pulling the data
+            # Sends get request pulling the data
             async with request("GET", URL, headers={}) as response:
                 if response.status == 200:
                     databox = await response.json()
@@ -65,6 +65,7 @@ class User(commands.Cog):
                             embed.set_image(url="https://i.pinimg.com/originals/6f/45/86/6f45868016994a389ebdb0170bd91287.gif")
                             embed.set_footer(text="Thank you {},".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
                             embed.timestamp = datetime.datetime.utcnow()
+                            await ctx.send(embed=embed)
 
                         else:
                             embed = discord.Embed(title=data["username"], url=data["url"], color=0x87CEEB)
@@ -87,6 +88,7 @@ class User(commands.Cog):
                             embed.add_field(name='Last online',value=data['last_online'][:-15], inline= True)
                             embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
                             embed.timestamp = datetime.datetime.utcnow()
+                            await ctx.send(embed=embed)
 
 
                     # creates embed for user's about page
@@ -97,6 +99,7 @@ class User(commands.Cog):
                                 embed = discord.Embed(title=titleName, url=titleURL, description="User's  about page is empty.", color=0x87CEEB)
                                 embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
                                 embed.timestamp = datetime.datetime.utcnow()
+                                await ctx.send(embed=embed)
                         else:
                             if len(data["about"])>2000:
                                 message = await ctx.send("Oh no too much to handle, hang on I'll create a short summary.")
@@ -105,12 +108,14 @@ class User(commands.Cog):
                                 embed = discord.Embed(title=titleName, url=titleURL, description=data["about"], color=0x87CEEB)
                                 embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
                                 embed.timestamp = datetime.datetime.utcnow()
+                                await ctx.send(embed=embed)
                                 await message.delete()
 
                             else:
                                 embed = discord.Embed(title=titleName, url=titleURL, description=data["about"], color=0x87CEEB)
                                 embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
                                 embed.timestamp = datetime.datetime.utcnow()
+                                await ctx.send(embed=embed)
                             
 
                     # creates embed for users anime and mangastatistics
@@ -147,6 +152,7 @@ class User(commands.Cog):
                         embed.add_field(name='Volumes read',value=data['manga']['volumes_read'], inline= True)
                         embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
                         embed.timestamp = datetime.datetime.utcnow()
+                        await ctx.send(embed=embed)
 
 
                     # creates embed for users favorites
@@ -195,15 +201,46 @@ class User(commands.Cog):
                                 
                         embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
                         embed.timestamp = datetime.datetime.utcnow()
+                        await ctx.send(embed=embed)
 
 
-                    # placeholder
+                    # creates embed for userupdates anime (manga yet to be made)
+                    # embed for anime includes title, status, episode seen (int) and total episodes (int)
+                    # embed for manga includes nothing yet
                     elif arg == "userupdates":
-                            
-                        embed = discord.Embed(title="Vignette", url="https://github.com/dave-kramer/vignette", description="Woopsie! I'm still working on this command, give me some time!", color=0x87CEEB)
-                        embed.set_image(url="https://i.pinimg.com/originals/9f/20/76/9f2076c3c2eff838420384629496466e.gif")
+
+                        data = data['anime']
+                        print(data)
+                        listdata = []
+
+                        # creates a list, loops through the data, adds it to the list
+                        # then splits it correctly, the "*" is used because there are anime
+                        # that uses the ","
+                        embed = discord.Embed(title=titleName + "'s anime updates", url=titleURL, description="We'll added more info later, for now enjoy :)", color=0x87CEEB)
+                        for length in range(0,len(data)):
+                            listdata.append(data[length]['entry']['title']) # title
+                            listdata.append(data[length]['score'])
+                            listdata.append(data[length]['status'])
+                            listdata.append(data[length]['episodes_seen'])
+                            listdata.append(data[length]['episodes_total'])
+                            listdata.append(data[length]['date'][:-15])
+                            embed.add_field(name=data[length]['entry']['title'], value=f"{data[length]['status']}  {data[length]['episodes_seen']} / {data[length]['episodes_total']} and scores a {data[length]['score']}", inline=False)
+                        string = '*'.join([str(item) for item in listdata])
+                        x = string.split("*")
+                        print(x)
+
+                        # loops through the list while replacing True and False to Paid & Free
+                        for i, word in enumerate(x):
+                            if word == 'Watching':
+                                x[i] = 'Watched'
+                            elif word == 'Plan to watch':
+                                x[i] = 'Plans to watch'
+                            elif word == 'None':
+                                x[i] == '?'
+
                         embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
                         embed.timestamp = datetime.datetime.utcnow()
+                        await ctx.send(embed=embed)
 
 
                     # placeholder
@@ -211,10 +248,30 @@ class User(commands.Cog):
 
                         if arg2 == "anime":
 
-                            embed = discord.Embed(title="Vignette", url="https://github.com/dave-kramer/vignette", description="Woopsie! I'm still working on this command, give me some time!", color=0x87CEEB)
-                            embed.set_image(url="https://i.pinimg.com/originals/9f/20/76/9f2076c3c2eff838420384629496466e.gif")
-                            embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
-                            embed.timestamp = datetime.datetime.utcnow()
+                            data = data
+                            print(data)
+                            if not data:
+                                await ctx.send("This user has no recent history.")
+                            else:
+                                listdata = []
+
+                                # creates a list, loops through the data, adds it to the list
+                                # then splits it correctly, the "*" is used because there are anime
+                                # that uses the ","
+                                embed = discord.Embed(title=titleName + "'s anime watch history", url=titleURL, color=0x87CEEB)
+                                for length in range(0,len(data)):
+                                    listdata.append(data[length]['anime']['name']) # title
+                                    listdata.append(data[length]['increment'])
+                                    listdata.append(data[length]['date'][11:][:-9])
+                                    listdata.append(data[length]['date'][:-15])
+                                    embed.add_field(name=data[length]['anime']['name'], value=f"Watched Episode {data[length]['increment']} at {data[length]['date'][11:][:-9]} on {data[length]['date'][:-15]}", inline=False)
+                                string = '*'.join([str(item) for item in listdata])
+                                x = string.split("*")
+                                #print(x)
+                                embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
+                                embed.timestamp = datetime.datetime.utcnow()
+                                await ctx.send(embed=embed)
+
 
                         if arg2 == "manga":
                             
@@ -222,24 +279,57 @@ class User(commands.Cog):
                             embed.set_image(url="https://i.pinimg.com/originals/9f/20/76/9f2076c3c2eff838420384629496466e.gif")
                             embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
                             embed.timestamp = datetime.datetime.utcnow()
+                            await ctx.send(embed=embed)
                             
 
                     # placeholder
                     elif arg == "friends":
-                            
-                        embed = discord.Embed(title="Vignette", url="https://github.com/dave-kramer/vignette", description="Woopsie! I'm still working on this command, give me some time!", color=0x87CEEB)
-                        embed.set_image(url="https://i.pinimg.com/originals/9f/20/76/9f2076c3c2eff838420384629496466e.gif")
+
+                        listdata = []
+
+                        # creates a list, loops through the data, adds it to the list
+                        # then splits it correctly, the "*" is used because there are anime
+                        # that uses the ","
+                        embed = discord.Embed(title=titleName + "'s friends", url=titleURL, color=0x87CEEB)
+                        for length in range(0,len(data)):
+                            listdata.append(data[length]['user']['username']) # title
+                            listdata.append(data[length]['user']['url']) # url
+                            listdata.append(data[length]['friends_since'][:-15]) # date since friends
+                            embed.add_field(name="\u200b", value=f"[{data[length]['user']['username']}]({data[length]['user']['url']}) been friends since {data[length]['friends_since'][:-15]}", inline=False)
+                        string = '*'.join([str(item) for item in listdata])
+                        x = string.split("*")
+                        #print(x)
                         embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
                         embed.timestamp = datetime.datetime.utcnow()
+                        await ctx.send(embed=embed)
 
 
                     # placeholder
                     elif arg == "reviews":
-
-                        embed = discord.Embed(title="Vignette", url="https://github.com/dave-kramer/vignette", description="Woopsie! I'm still working on this command, give me some time!", color=0x87CEEB)
-                        embed.set_image(url="https://i.pinimg.com/originals/9f/20/76/9f2076c3c2eff838420384629496466e.gif")
-                        embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
-                        embed.timestamp = datetime.datetime.utcnow()
+                        #print(data)
+                        listdata = []
+                        if not data:
+                            embed = discord.Embed(title=titleName + "'s reviews", url=titleURL, description="Oh no, this user has no reviews.", color=0x87CEEB)
+                            embed.set_image(url="https://i.pinimg.com/originals/b2/a9/f9/b2a9f96c4faa61463d625876e1666b68.gif")
+                            embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
+                            embed.timestamp = datetime.datetime.utcnow()
+                            await ctx.send(embed=embed)
+                        else:
+                            titleURL = f"https://myanimelist.net/profile/{name}/{arg}"
+                            embed = discord.Embed(title=titleName + "'s reviews", url=titleURL, color=0x87CEEB)
+                            embed.set_thumbnail(url=data[0]['entry']['images']['jpg']['small_image_url'])
+                            for length in range(0,len(data)):
+                                listdata.append(data[length]['entry']['title']) # title
+                                listdata.append(data[length]['entry']['url']) # url
+                                listdata.append(data[length]['scores']['overall']) # overall score
+                                listdata.append(data[length]['date'][:-15]) # date review made
+                                embed.add_field(name="\u200b", value=f"[{data[length]['entry']['title']}]({data[length]['entry']['url']}) was given a score of {data[length]['scores']['overall']} on {data[length]['date'][:-15]}", inline=False)
+                            string = '*'.join([str(item) for item in listdata])
+                            x = string.split("*")
+                            print(x)
+                            embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
+                            embed.timestamp = datetime.datetime.utcnow()
+                            await ctx.send(embed=embed)
 
 
                     # placeholder
@@ -249,23 +339,24 @@ class User(commands.Cog):
                         embed.set_image(url="https://i.pinimg.com/originals/9f/20/76/9f2076c3c2eff838420384629496466e.gif")
                         embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
                         embed.timestamp = datetime.datetime.utcnow()
+                        await ctx.send(embed=embed)
 
 
                     # placeholder
                     elif arg == "clubs":
-
+                        print(data)
                         embed = discord.Embed(title="Vignette", url="https://github.com/dave-kramer/vignette", description="Woopsie! I'm still working on this command, give me some time!", color=0x87CEEB)
                         embed.set_image(url="https://i.pinimg.com/originals/9f/20/76/9f2076c3c2eff838420384629496466e.gif")
                         embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
                         embed.timestamp = datetime.datetime.utcnow()
+                        await ctx.send(embed=embed)
 
-                    await ctx.send(embed=embed)
 
 
-                # sent an embed when typing in a username that doesn't exist
+                # send an embed when typing in a username that doesn't exist
                 else:
 
-                    embed = discord.Embed(description="Woopsie! That user couldn't be found, try again :)", color=0x87CEEB)
+                    embed = discord.Embed(description="Woopsie! That user couldn't be found, try again :)" + "\n" + "the API status was: " + {response.status}, color=0x87CEEB)
                     embed.set_author(name="Vignette", url="https://github.com/dave-kramer/vignette", icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
                     embed.set_image(url="https://i.pinimg.com/originals/9f/20/76/9f2076c3c2eff838420384629496466e.gif")
                     embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
