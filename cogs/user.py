@@ -272,7 +272,7 @@ class User(commands.Cog):
                                 embed.timestamp = datetime.datetime.utcnow()
                                 await ctx.send(embed=embed)
 
-
+			# placeholder
                         if arg2 == "manga":
                             
                             embed = discord.Embed(title="Vignette", url="https://github.com/dave-kramer/vignette", description="Woopsie! I'm still working on this command, give me some time!", color=0x87CEEB)
