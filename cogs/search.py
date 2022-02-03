@@ -416,7 +416,7 @@ class Search(commands.Cog):
                 return
 
 
-async def get_selection(self, ctx, message, data_length):
+async def get_selection(self, ctx, message, data_length, type):
     def check(m):
         return m.author == ctx.author and m.channel == ctx.channel
       
@@ -442,7 +442,7 @@ async def get_selection(self, ctx, message, data_length):
             continue
 
 
-def get_results(data, name):
+def get_results(data, name, query, type):
     result_list = [f'{str(n + 1)}.   {data[n][name]}' for n in range(0, len(data))]
     cancel_message = 'Tell me the number or type `stfu` to shut me up.'
 
