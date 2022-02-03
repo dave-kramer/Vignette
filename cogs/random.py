@@ -168,12 +168,13 @@ class Random(commands.Cog):
 	# if argument has been used wrong it triggers the MissingRequiredArgument below
 	@random.error
 	async def random_error(self,ctx,error):
-    		if isinstance(error,(MissingRequiredArgument)):
-      			if ctx.guild:
-        			await ctx.send('Woopsie! use .random <anime, manga, characters, people or users>')
-      			else:
-        			return
+			if isinstance(error,(MissingRequiredArgument)):
+				if ctx.guild:
+					await ctx.send('Woopsie! use .random <anime, manga, characters, people or users>')
+				else:
+					return
 
 
+# adding cog to bot setup
 def setup(bot):
 	bot.add_cog(Random(bot))

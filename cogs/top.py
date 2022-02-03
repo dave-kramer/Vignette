@@ -133,15 +133,27 @@ class Top(commands.Cog):
                             + "\n" + "25. " + str(titles[48]) + " with " + str(titles[49]) + " favorites" + "\n" + "\n" + "*Requested by: {}*".format(ctx.author.display_name))
 
 
-		# placeholder
+		# gives the top 10 anime, this includes the username, title, total score and amount of votes
         elif arg == "reviews":
+            
+            for length in range(0, len(title)):
+                titlelist.append(title[length]['user']['username'])
+                titlelist.append(title[length]['entry']['title'])
+                titlelist.append(title[length]['scores']['overall'])
+                titlelist.append(title[length]['votes'])
+            titles = titlelist
 
-            embed = discord.Embed(title="Vignette", url="https://github.com/dave-kramer/vignette", description="Woopsie! I'm still working on this command, give me some time!", color=0x87CEEB)
-            embed.set_image(url="https://i.pinimg.com/originals/9f/20/76/9f2076c3c2eff838420384629496466e.gif")
-            embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
-            embed.timestamp = datetime.datetime.utcnow()
-            await ctx.send(embed=embed)
-
+            await ctx.send("**The current top 10 reviews " + str(arg) + " on MyAnimeList**" + "\n"
+                                        + "\n" + "1. " + str(titles[0]) + " on " + str(titles[1]) + " scored a " + str(titles[2]) + " with " + str(titles[3]) + " votes" 
+                                        + "\n" + "2. " + str(titles[4]) + " on " + str(titles[5]) + " scored a " + str(titles[6]) + " with " + str(titles[7]) + " votes" 
+                                        + "\n" + "3. " + str(titles[8]) + " on " + str(titles[9]) + " scored a " + str(titles[10]) + " with " + str(titles[11]) + " votes" 
+                                        + "\n" + "4. " + str(titles[12]) + " on " + str(titles[13]) + " scored a " + str(titles[14]) + " with " + str(titles[15]) + " votes" 
+                                        + "\n" + "5. " + str(titles[16]) + " on " + str(titles[17]) + " scored a " + str(titles[18]) + " with " + str(titles[19]) + " votes" 
+                                        + "\n" + "6. " + str(titles[20]) + " on " + str(titles[21]) + " scored a " + str(titles[22]) + " with " + str(titles[23]) + " votes" 
+                                        + "\n" + "7. " + str(titles[24]) + " on " + str(titles[25]) + " scored a " + str(titles[26]) + " with " + str(titles[27]) + " votes" 
+                                        + "\n" + "8. " + str(titles[28]) + " on " + str(titles[29]) + " scored a " + str(titles[30]) + " with " + str(titles[31]) + " votes" 
+                                        + "\n" + "9. " + str(titles[32]) + " on " + str(titles[33]) + " scored a " + str(titles[34]) + " with " + str(titles[35]) + " votes" 
+                                        + "\n" + "10. " + str(titles[36]) + " on " + str(titles[37]) + " scored a " + str(titles[38]) + " with " + str(titles[39]) + " votes" + "\n" + "\n" + "*Requested by: {}*".format(ctx.author.display_name))
 
     # if argument has been used wrong it triggers the MissingRequiredArgument below
     @top.error

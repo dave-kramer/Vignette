@@ -45,13 +45,19 @@ class Watch(commands.Cog):
             # then splits it correctly, the "*" is used because there are anime
             # that uses the ","
             listdata = []
+            embed=discord.Embed(title=setTitle, url=URL2, color=0xf37a12)
             for length in range(0,len(data)):
                 listdata.append(data[length]['entry']['title']) # title
                 listdata.append(data[length]['episodes'][0]['url']) # url to episode
                 listdata.append(data[length]['episodes'][0]['title']) # episode
                 listdata.append(data[length]['episodes'][0]['premium']) # premium true/false
+                embed.add_field(name="\u200b", value=f"[{data[length]['entry']['title']}]({data[length]['episodes'][0]['url']}) released {data[length]['episodes'][0]['title']} and is {data[length]['episodes'][0]['premium']} to watch.", inline=False)
             string = '*'.join([str(item) for item in listdata])
             x = string.split("*")
+            embed.set_image(url=setImage)
+            embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
+            embed.timestamp = datetime.datetime.utcnow()
+            await ctx.send(embed=embed)
 
 
             # loops through the list while replacing True and False to Paid & Free

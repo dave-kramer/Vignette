@@ -245,7 +245,9 @@ class User(commands.Cog):
                         await ctx.send(embed=embed)
 
 
-                    # placeholder
+                    # creates embed for history anime (manga yet to be made)
+                    # embed for anime includes title, increment, time and date
+                    # embed for manga includes nothing yet
                     elif arg == "history":
 
                         if arg2 == "anime":
@@ -284,7 +286,8 @@ class User(commands.Cog):
                             await ctx.send(embed=embed)
                             
 
-                    # placeholder
+                    # creates embed for friends
+                    # embed includes username, user url and friends since all in same embed.
                     elif arg == "friends":
 
                         listdata = []
@@ -306,7 +309,8 @@ class User(commands.Cog):
                         await ctx.send(embed=embed)
 
 
-                    # placeholder
+                    # creates embed for reviews
+                    # embed for title, url, overall score and date, also includes image as thumbnail
                     elif arg == "reviews":
                         #print(data)
                         listdata = []
@@ -334,7 +338,8 @@ class User(commands.Cog):
                             await ctx.send(embed=embed)
 
 
-                    # placeholder
+                    # creates embed for reccomendations
+                    # embed for title, url for first anime and title url for recommended anime
                     elif arg == "recommendations":
                         print(data)
 
@@ -362,7 +367,8 @@ class User(commands.Cog):
                             await ctx.send(embed=embed)
 
 
-                    # placeholder
+                    # creates embed for clubs
+                    # embed for name and url.
                     elif arg == "clubs":
                         print(data)
                         listdata = []
@@ -381,19 +387,10 @@ class User(commands.Cog):
 
 
 
-                # sent a message
+                # sent a message if something goes wrong
                 else:
                     await ctx.send(f"Something went wrong, not sure what happened, maybe you've typed the username wrong, the API is down or the user is not in any clubs and such, either way feel free to try again.")
 
-
-	# if argument has been used wrong it triggers the MissingRequiredArgument below
-	@user.error
-	async def user_error(self,ctx,error):
-		if isinstance(error,(MissingRequiredArgument)):
-			if ctx.guild:
-				await ctx.send('To use this command do as following: .user <argument> <argument>')
-			else:
-				return
 
 
 # adding cog to bot setup

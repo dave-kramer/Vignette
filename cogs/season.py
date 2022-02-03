@@ -20,6 +20,9 @@ class Season(commands.Cog):
             if arg2 is None:
                 await ctx.send("You've forgotten the year.")
                 return None
+        elif arg.lower() == "later":
+            URL = f"https://api.jikan.moe/v3/season/{arg.lower()}"
+            URL2 = f"https://myanimelist.net/anime/season/later"
         else:
             await ctx.send("I can only retrieve .season <summer, fall, winter and spring> <year>")
             return None
@@ -27,22 +30,39 @@ class Season(commands.Cog):
         async with request("GET", URL, headers={}) as response:
             if response.status == 200:
                 databox = await response.json()
-                data = databox["data"]
-                #print(data)
+                listnumber = 0
+                if arg.lower() == "later":
+                    data = databox
 
-                listdata = []
-                embed = discord.Embed(title=f"Anime in {arg.lower().title()} {arg2} ", url=URL2, color=0x87CEEB)
-                for length in range(0,len(data)):
-                    listdata.append(data[length]['title']) # title
-                    listdata.append(data[length]['url']) # url
-                    listdata.append(data[length]['aired']['from'][:-15]) # release date
-                    embed.add_field(name="\u200b", value=f"[{data[length]['title']}]({data[length]['url']}) is airing on {data[length]['aired']['from'][:-15]}", inline=False)
-                string = '*'.join([str(item) for item in listdata])
-                x = string.split("*")
-                print(x)
-                embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
-                embed.timestamp = datetime.datetime.utcnow()
-                await ctx.send(embed=embed)
+                    listdata = []
+                    embed = discord.Embed(title=f"Anime released later", url=URL2, description="Anime that have no airing date yet.", color=0x87CEEB)
+                    for length in range(0,len(data)):
+                        listdata.append(data['anime'][length]['title']) # title
+                        listdata.append(data['anime'][length]['url']) # url
+                        embed.add_field(name="\u200b", value=f"[{data['anime'][length]['title']}]({data['anime'][length]['url']})", inline=False)
+                    string = '*'.join([str(item) for item in listdata])
+                    x = string.split("*")
+                    print(x)
+                    embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
+                    embed.timestamp = datetime.datetime.utcnow()
+                    await ctx.send(embed=embed)
+
+                else:
+                    data = databox["data"]
+                    listdata = []
+                    embed = discord.Embed(title=f"Anime in {arg.lower().title()} {arg2} ", url=URL2, color=0x87CEEB)
+                    for length in range(0,len(data)):
+                        listnumber += 1
+                        listdata.append(data[length]['title']) # title
+                        listdata.append(data[length]['url']) # url
+                        listdata.append(data[length]['aired']['from'][:-15]) # release date
+                        embed.add_field(name="\u200b", value=f"{listnumber}. [{data[length]['title']}]({data[length]['url']}) is airing on {data[length]['aired']['from'][:-15]}", inline=False)
+                    string = '*'.join([str(item) for item in listdata])
+                    x = string.split("*")
+                    print(x)
+                    embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
+                    embed.timestamp = datetime.datetime.utcnow()
+                    await ctx.send(embed=embed)
 
             else:
                 await ctx.send("I can only retrieve .season <summer, fall, winter and spring> <year>")

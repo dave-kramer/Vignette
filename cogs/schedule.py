@@ -42,7 +42,7 @@ class Schedule(commands.Cog):
                 embed.add_field(name=data[length]['title'], value=data[length]['airing_start'][11:][:-9], inline=False)
             string = '*'.join([str(item) for item in listdata])
             x = string.split("*")
-            print(x)
+            #print(x)
             embed.set_footer(text="Requested by: {}".format(ctx.author.display_name), icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
             embed.timestamp = datetime.datetime.utcnow()
             await ctx.send(embed=embed)
