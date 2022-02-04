@@ -19,10 +19,10 @@ class Schedule(commands.Cog):
         '''Pulls the right data from MAL, checks the arguments needed to use the function correctly.
         '''
         if arg.lower() in ("monday", "tuesday", "thursday", "friday", "saturday", "sunday"):
-            URL = f"https://api.jikan.moe/v3/schedule/{arg.lower()}"
+            URL = f"https://api.jikan.moe/v4/schedules/{arg.lower()}"
         elif arg.lower() == "today":
             arg = date.today().strftime("%A")
-            URL = f"https://api.jikan.moe/v3/schedule/{arg}"
+            URL = f"https://api.jikan.moe/v4/schedules/{arg}"
         else:
             await ctx.send("I can only retrieve .schedule <today> **or** <monday - sunday>")
 
@@ -31,15 +31,16 @@ class Schedule(commands.Cog):
         async with request("GET", URL, headers={}) as response:
             if response.status == 200:
                 databox = await response.json()
-                data = databox[f'{arg.lower()}']
+                data = databox['data']
 
             titleURL = f"https://myanimelist.net/anime/season/schedule"
             listdata = []
-            embed = discord.Embed(title=f"Anime schedule for " + f"{arg.lower().title()}", url=titleURL, color=0x87CEEB)
+            embed = discord.Embed(title=f"Anime schedule for " + f"{arg.lower().title()}", description="NOTE: timezone is ALWAYS Asia/Tokyo", url=titleURL, color=0x87CEEB)
             for length in range(0,len(data)):
-                listdata.append(data[length]['title']) # title
-                listdata.append(data[length]['airing_start'][11:][:-9]) # starttime
-                embed.add_field(name=data[length]['title'], value=data[length]['airing_start'][11:][:-9], inline=False)
+                if data[length]['broadcast']['time'] is None:
+                    continue
+                else:
+                    embed.add_field(name=data[length]['title'], value=data[length]['broadcast']['time'], inline=False)
             string = '*'.join([str(item) for item in listdata])
             x = string.split("*")
             #print(x)
