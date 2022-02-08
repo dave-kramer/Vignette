@@ -4,7 +4,7 @@
 
 [![Discord](https://img.shields.io/discord/927517646260437032.svg?colorB=7289da&label=discord&logo=Discord&logoColor=fff&style=flat)](https://discord.gg/noneyet)
 [![](https://img.shields.io/badge/discord.py-v1.7.3-blue.svg?logo=npm)](https://github.com/Rapptz/discord.py)
-[![]https://img.shields.io/badge/discord_components-v2.1.2-blue.svg?logo=npm)](https://github.com/kiki7000/discord.py-components
+[![]https://img.shields.io/badge/discord_components-v2.1.2-blue.svg?logo=npm)](https://github.com/kiki7000/discord.py-components)
 [![License](https://img.shields.io/github/license/dave-kramer/atlasboy)](https://github.com/dave-kramer/vignette/blob/main/LICENSE)
 
 > Vignette is a Discord bot in Python for MyAnimeList.
