@@ -1,7 +1,9 @@
-# vignette
+# Vignette 
 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![Discord](https://img.shields.io/discord/927517646260437032.svg?colorB=7289da&label=discord&logo=Discord&logoColor=fff&style=flat)](https://discord.gg/bKcFgGA5ya)
+[![](https://img.shields.io/badge/discord.py-v1.7.3-blue.svg?logo=npm)](https://github.com/Rapptz/discord.py)
+[![License](https://img.shields.io/github/license/dave-kramer/atlasboy)](https://github.com/dave-kramer/atlasboy/blob/main/LICENSE)
 
-Vignette is an open source Discord bot in Python for MyAnimeList.
+> Vignette is a Discord bot in Python for MyAnimeList.
 
-Look up MyAnimeListprofiles, link your profile & see others, bring up profile statistics, anime, manga and characters.
+Look up MyAnimeList profiles, anime, manga, characters, the industry, top & seasonal anime, get notified when new anime airs and much much more!
