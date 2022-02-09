@@ -1,4 +1,4 @@
-<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="AtlasBoy" src="https://github.com/dave-kramer/vignette/blob/main/previews/frontimg.png?size=1024"> 
+<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="Vignette" src="https://github.com/dave-kramer/vignette/blob/main/previews/vignetteimg.png?size=1024"> 
 
 # Vignette 
 
