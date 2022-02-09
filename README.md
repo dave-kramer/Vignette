@@ -7,6 +7,21 @@
 [![](https://img.shields.io/badge/discord_components-v2.1.2-blue.svg?logo=npm)](https://github.com/kiki7000/discord.py-components)
 [![License](https://img.shields.io/github/license/dave-kramer/atlasboy)](https://github.com/dave-kramer/vignette/blob/main/LICENSE)
 
-> Vignette is a Discord bot in Python for MyAnimeList.
+> Vignette is a Discord bot to surf MyAnimeList.
 
+
+## Table of Contents
+
+- [About](#About)
+- [Features](#features)
+- [Installation](#installation)
+- [License](#license)
+- [Previews](#previews)
+
+## About
 Look up MyAnimeList profiles, anime, manga, characters, the industry, top & seasonal anime, get notified when new anime airs and much much more!
+
+## Features
+## Installation
+## License
+## Previews
