@@ -19,12 +19,12 @@
 - [Previews](#previews)
 
 ## About
-Vignette is a bot to surf the MyAnimeList website in Discord with the use of the [Jikan](https://github.com/jikan-me/jikan-rest).
+Vignette is a bot to surf the MyAnimeList website in Discord with the use of the [Jikan](https://github.com/jikan-me/jikan-rest).  
 Get information for anime, manga, users, characters, the industry & more, be able to receive airing schedule or tell Vignette which anime you want to
-get notified about when it airs.\n
-Know instantly which characters are people's most favourite, get a waifu, use [trace.moe](https://trace.moe/) if you've found a picture and want to know what anime its from.\n
-Get recommendations, trailers, quotes, watchlists and check what other MyAnimeList users are watching.\n
-Don't forget to play the anime or character guess game, receive points and battle other members.
+get notified about when it airs.  
+Know instantly which characters are people's most favourite, get a waifu, use [trace.moe](https://trace.moe/) if you've found a picture and want to know what anime its from.  
+Get recommendations, trailers, quotes, watchlists and check what other MyAnimeList users are watching.  
+Don't forget to play the anime or character guess game, receive points and battle other members.  
 
 ## Features
 | Command | Arguments | Information | Example |
