@@ -28,7 +28,7 @@ Don't forget to play the anime or character guess game, receive points and battl
 
 ## Features
 | Command | Arguments | Information | Example |
-| ------------- | ------------- | ------------- |
+| ------------- | ------------- | ------------- | ------------- |
 | .anime | `none` | Receive information about an anime.  | .anime Gabriel Dropout |
 | .manga  | `none` | Receive information about a manga.  | .manga Berserk |
 | .character  | `none` | Receive information about a characters.  | .character Levi |
