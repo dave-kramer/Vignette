@@ -35,7 +35,25 @@ Don't forget to play the anime or character guess game, receive points and battl
 | .person | `none` | Receive information about a person.  | .person Hanazawa Kana |
 | .producer  | `none` | Receive information about a producer. | .producer Aniplex |
 | .magazine  | `none` | Receive information about a magazine | .magazine Ace Assault |
-| .user  | `about, clubs, favorites, friennds, history, recommendations, reviews, statistics, userupdates` | Receive information about anime. | .user davekramer history |
+| .user  | `about, clubs, favorites, friennds, history, recommendations, reviews, statistics, userupdates` | Receive information about a MyAnimeList user. | .user davekramer history |
+| .random  | `anime, manga, characters, people, reviews` | Get something random! | .random characters |
+| .top  | `anime, manga, characters, people, reviews` | Get the top straight from MAL. | .top anime |
+| .season  | `summer, fall, winter, spring, later` + `year` | Receive the seasonal anime. | .top anime |
+| .notify  | `none` | Add an anime and receive notification when it airs. | .notify Shingeki no Kyojin: The Final Season Part 2 |
+| .airlist  | `none` | Get the current airlist you've put together. | .airlist |
+| .delete  | `none` | Remove an airing anime from your airlist. | .delete Shingeki no Kyojin: The Final Season Part 2 |
+| .waifu  | `neko, shinobu, megumin, bully, cuddle, cry, hug, awoo, kiss, lick, pat, smug, bonk, yeet, blush, smile, wave, highfive, handhold, nom, bite, glomp, slap, kill, kick, happy, wink, poke, dance, cringe` | Get a random waifu. | .waifu |
+| .quote  | `none` | Get a random anime/manga quote. | .quote |
+| .watch  | `recent, popular` | Receive the recent or popular top 25 to watch. | .watch popular |
+| .recommendations  | `anime, manga` | Get a random recommendation from MAL. | .recommendation anime |
+| .schedule  | `today, monday, tuesday, wednesday, thursday, friday, saturday, sunday` | Get the schedule for the week. | .schedule today |
+| .guess  | `anime, char` | Guess the Character game. | .guess char |
+| .leaderboards  | `none` | Get the current leaderboards. | .leaderboards |
+| .trace  | `none` | Search for the anime by image. | .trace link |
+| .trailer  | `recent, popular` | Receive the recent or popular trailers. | .trailer recent |
+| .trivia  | `recent, popular` | Play a small anime trivia game. | .trivia easy 5 |
+| .commands  | `none, waifu` | Receive the all the commands or just for waifu | .commands |
+
 
 ## Installation
 
