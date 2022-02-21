@@ -6,7 +6,7 @@ from discord.ext import commands
 from discord_components import Button, ButtonStyle
 from load import *
 
-
+# set CHANNELID to channel u want to use guessgame in.
 class Guess(commands.Cog):
 
     def __init__(self, client):
@@ -16,7 +16,7 @@ class Guess(commands.Cog):
 
     @commands.command(name='guess')
     async def guess(self, ctx, arg=None):
-        if ctx.channel.id != 913836567125196811:
+        if ctx.channel.id != CHANNELID:
             await ctx.send("Please use this in `#guess-the-character` channel")
         else:
             if arg == "char":
