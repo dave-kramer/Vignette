@@ -79,8 +79,9 @@ async def get():
     """
     | Announce airing anime.
     | Checks weekday name and sets in URL
+    | SETCHANNELID to your channel id you want to receive airing anime in
     """
-    channel = client.get_channel(819284431914270732)
+    channel = client.get_channel(SETCHANNELID)
     weekdays = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
     date = datetime.now()
     tz = pytz.timezone('Asia/Tokyo')
