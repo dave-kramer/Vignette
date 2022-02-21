@@ -54,6 +54,19 @@ Don't forget to play the anime or character guess game, receive points and battl
 
 
 ## Installation
+### Creating Vignette in Discord
+1. Go to the [Discord Developer Portal](https://discord.com/developers/docs).
+2. Login to your Discord account.
+3. Click on New Application.
+4. Enter the name of your bot and press create.
+5. Click on the Bot tab on the left menu bar.
+6. Click on Add Bot.
+7. Scroll down and enable PRESENCE INTENT and SERVER MEMBERS INTENT, then press Save Changes.
+8. Press OAuth2 on the left menu bar.
+9. Check the checkbox and press Copy.
+10. You can paste this link in your browser and add this bot to any discord server you want.
+
+### Local Setup
 
 ## License
 [MIT License](https://github.com/dave-kramer/vignette/blob/main/README.md)
