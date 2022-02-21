@@ -59,3 +59,10 @@ Don't forget to play the anime or character guess game, receive points and battl
 [MIT License](https://github.com/dave-kramer/vignette/blob/main/README.md)
 
 ## Previews
+![animecommandimg](https://github.com/dave-kramer/vignette/blob/main/previews/animecommandimg.png)
+![usercommandimg](https://github.com/dave-kramer/vignette/blob/main/previews/usercommandimg.png)
+![notifycommandimg](https://github.com/dave-kramer/vignette/blob/main/previews/notifycommandimg.png)
+![airingcommandimg](https://github.com/dave-kramer/vignette/blob/main/previews/airingcommandimg.png)
+![guesscharcommandimg](https://github.com/dave-kramer/vignette/blob/main/previews/guesscharcommandimg.png)
+![guessanimecommandimg](https://github.com/dave-kramer/vignette/blob/main/previews/guessanimecommandimg.png)
+![topcommandimg](https://github.com/dave-kramer/vignette/blob/main/previews/topcommandimg.png)
