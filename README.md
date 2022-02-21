@@ -36,7 +36,7 @@ Don't forget to play the anime or character guess game, receive points and battl
 | .user  | `none` | Receive information about a MyAnimeList user including buttons for about, clubs, favorites, friends, history, recommendations, reviews, statistics, userupdates. | .user davekramer |
 | .random  | `anime, manga, characters, people, reviews` | Get something random! | .random characters |
 | .top  | `anime, manga, characters, people, reviews` | Get the top straight from MAL. | .top anime |
-| .season  | `summer, fall, winter, spring, later` + `year` | Receive the seasonal anime. | .top anime |
+| .season  | `summer, fall, winter, spring, later` + `year` | Receive the seasonal anime. | .season fall 2022 |
 | .notify  | `none` | Add an anime and receive notification when it airs. | .notify Shingeki no Kyojin: The Final Season Part 2 |
 | .airlist  | `none` | Get the current airlist you've put together. | .airlist |
 | .delete  | `none` | Remove an airing anime from your airlist. | .delete Shingeki no Kyojin: The Final Season Part 2 |
