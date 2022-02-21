@@ -34,7 +34,7 @@ Don't forget to play the anime or character guess game, receive points and battl
 | .person | `none` | Receive information about a person.  | .person Hanazawa Kana |
 | .producer  | `none` | Receive information about a producer. | .producer Aniplex |
 | .magazine  | `none` | Receive information about a magazine | .magazine Ace Assault |
-| .user  | `none, about, clubs, favorites, friends, history, recommendations, reviews, statistics, userupdates` | Receive information about a MyAnimeList user. | .user davekramer history |
+| .user  | `name` | Receive information about a MyAnimeList user including buttons for about, clubs, favorites, friends, history, recommendations, reviews, statistics, userupdates. | .user davekramer |
 | .random  | `anime, manga, characters, people, reviews` | Get something random! | .random characters |
 | .top  | `anime, manga, characters, people, reviews` | Get the top straight from MAL. | .top anime |
 | .season  | `summer, fall, winter, spring, later` + `year` | Receive the seasonal anime. | .top anime |
