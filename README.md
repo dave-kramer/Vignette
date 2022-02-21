@@ -60,13 +60,24 @@ Don't forget to play the anime or character guess game, receive points and battl
 3. Click on New Application.
 4. Enter the name of your bot and press create.
 5. Click on the Bot tab on the left menu bar.
-6. Click on Add Bot.
-7. Scroll down and enable PRESENCE INTENT and SERVER MEMBERS INTENT, then press Save Changes.
-8. Press OAuth2 on the left menu bar.
-9. Check the checkbox and press Copy.
-10. You can paste this link in your browser and add this bot to any discord server you want.
+6. Click on Add Bot & Click to Reveal Token, save this token for a moment somewhere.
+7. Press OAuth2 on the left menu bar.
+8. Check the checkbox and press Copy.
+9. You can paste this link in your browser and add this bot to any discord server you want.
 
 ### Local Setup
+10. Install [Python](https://www.python.org/).
+11. [Download](https://github.com/dave-kramer/vignette/archive/refs/heads/main.zip) or [clone](https://github.com/dave-kramer/vignette.git) the bot.
+12. Unpack ZIP & create an .env file including DISCORD_TOKEN="TOKENHERE" and add your BOT TOKEN from step 6 inside the "" & save.
+13. Save this .env file
+14. Go to your discord server and create or select a channel that you want the guess game in - right click the channel and click Copy ID.
+    - If you dont have the Copy ID option, enable Developer Mode in Discord settings -> Advanced -> Developer Mode.
+15. Add this Channel ID to guess.py inside the cog folder on line 19 replace CHANNELID with the Channel ID & save.
+16. Repeat step 14 for airing anime, this is the spot where u want anime airing notifications, this can be the same channel or another.
+17. Add this Channel ID to bot.py inside the main folder on line 84 replace SETCHANNELID with the Channel ID & save.
+18. Open cmd, locate the folder through cmd and run the bot by typing python bot.py
+    - If you're new on how to run Python scripts use google.
+19. Vignette is now running.
 
 ## License
 [MIT License](https://github.com/dave-kramer/vignette/blob/main/README.md)
